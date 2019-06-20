@@ -16,6 +16,14 @@ RUN apt install -y tesseract-ocr
 RUN python3.7 -m pip install pillow
 RUN python3.7 -m pip install pytesseract
 RUN python3.7 -m pip install imutils
+# Fish shell
+RUN apt install -y fish
+# Tools
+RUN apt install -y vim
 # Aliase for python3.7
 RUN echo 'alias python=python3.7' >> ~/.bashrc
+# Set fish as default shell
+RUN chsh -s /usr/bin/fish
+RUN fish
+
 
