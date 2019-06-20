@@ -1,4 +1,5 @@
 FROM ubuntu:18.04
+ADD VERSION .
 # Update Ubuntu Software repository
 RUN apt update
 # Install Python 3.7
