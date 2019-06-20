@@ -6,6 +6,7 @@ Includes:
 - OpenCV 4
 - Tesseract 4
 - Fish Shell
+- Vim
 
 # Build
 
