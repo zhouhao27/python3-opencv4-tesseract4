@@ -1,7 +1,6 @@
 FROM ubuntu:18.04
 ADD VERSION .
 # Update Ubuntu Software repository and install 
-# RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt update && apt install -y \
   software-properties-common \
   libsm6 \
@@ -11,17 +10,21 @@ RUN apt update && apt install -y \
   fish \
   vim \
   git \
-  python3 && \
+  python3 
+
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt install -y \
+  python3-pip && \
   if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
   # python -m pip install --no-cache --upgrade pip && \
-  # if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
+  if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
   rm -rf /var/lib/apt/lists/*
 
-# RUN pip install \ 
-#   opencv-contrib-python \
-#   pillow \
-#   pytesseract \
-#   imutils
+RUN pip install \ 
+  opencv-contrib-python \
+  pillow \
+  pytesseract \
+  imutils
 
 # Install vim
 ADD ./vimrc /root/.vimrc

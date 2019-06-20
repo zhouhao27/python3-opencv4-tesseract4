@@ -2,7 +2,7 @@
 
 Includes:
 
-- Python 3.7
+- Python 3
 - OpenCV 4
 - Tesseract 4
 - Fish Shell
