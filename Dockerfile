@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   python3-pip && \
   if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
   if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
+  pip install --no-cache --upgrade pip setuptools wheel && \
   rm -rf /var/lib/apt/lists/*
 
 # RUN add-apt-repository ppa:deadsnakes/ppa
@@ -24,11 +25,14 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 #   rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache --upgrade \ 
-  setuptools \
   opencv-contrib-python \
-  pillow 
-  # pytesseract \
-  # imutils
+  pillow \
+  pytesseract \
+  imutils
+
+# RUN pip install --no-cache --upgrade \ 
+#   pytesseract \
+#   imutils
 
 # Install vim
 ADD ./vimrc /root/.vimrc
