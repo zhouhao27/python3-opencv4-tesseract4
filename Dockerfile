@@ -3,6 +3,8 @@ ADD VERSION .
 # Update Ubuntu Software repository and install 
 RUN apt-get update && apt-get install --no-install-recommends -y \
   software-properties-common \
+  build-essential \
+  cmake \
   libsm6 \
   libxext6 \
   libxrender-dev \
@@ -11,6 +13,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
   vim \
   git \
   python3 \
+  python3-dev \
   python3-pip && \
   if [ ! -e /usr/bin/python ]; then ln -sf python3 /usr/bin/python ; fi && \
   if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
@@ -37,9 +40,10 @@ RUN pip install --no-cache --upgrade \
 # Install vim
 ADD ./vimrc /root/.vimrc
 # 用vundle管理vim插件
-RUN git clone https://github.com/VundleVim/Vundle.vim.git /root/.vim/bundle/Vundle.vim
-# 安装vim插件
-RUN vim -c PluginInstall -c q -c q
+RUN git clone https://github.com/VundleVim/Vundle.vim.git /root/.vim/bundle/Vundle.vim && \
+  # 安装vim插件
+  vim -c PluginInstall -c q -c q && \
+  python /root/.vim/bundle/youcompleteme/install.py --clang-completer
 
 # Add configuration file for fish
 RUN mkdir -p /root/.config/fish

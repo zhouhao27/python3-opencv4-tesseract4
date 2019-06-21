@@ -12,6 +12,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'https://github.com/bling/vim-airline'
 Plugin 'https://github.com/scrooloose/nerdtree'
+Plugin 'valloric/youcompleteme'
 nnoremap <F3> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
